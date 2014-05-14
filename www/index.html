@@ -609,8 +609,12 @@
 			function populateLoginForm(settings) {
 				$('#login-username').val(settings.username);
 				settings.autolog ? $('#login-password').val(settings.password) : $('#login-password').val();
-				$('#login-enterprise-url').val(settings.baseurl);
 				$('#login-auto').prop('checked',settings.autolog).checkboxradio('refresh');
+				
+				if(settings.enterprise) {
+					$('#login-enterprise-url').val(settings.baseurl);
+				}
+
 				
 				$('#login-openshift-type-radio-group-enterprise').prop('checked',settings.enterprise).checkboxradio('refresh');
 				$('#login-openshift-type-radio-group-online').prop('checked',!settings.enterprise).checkboxradio('refresh');
@@ -639,11 +643,9 @@
 
 			$("input[name='login-openshift-type-radio-group']").change(function(e){
 				var enterprise_url_textbox_div = $("#login-enterprise-url-div");
-				var enterprise_url_textbox = $('#login-enterprise-url');
 			    var online_create_account_div = $("#login-openshift-origin-create-div");	
 			    
 				if($('#login-openshift-type-radio-group-enterprise').prop('checked')) {
-					enterprise_url_textbox.val('');
 					enterprise_url_textbox_div.show();
     				online_create_account_div.hide();
 			    } else {
