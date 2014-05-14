@@ -639,10 +639,12 @@
 
 			$("input[name='login-openshift-type-radio-group']").change(function(e){
 				var enterprise_url_textbox_div = $("#login-enterprise-url-div");
-			    var online_create_account_div = $("#login-openshift-origin-create-div");
-								
+				var enterprise_url_textbox = $('#login-enterprise-url');
+			    var online_create_account_div = $("#login-openshift-origin-create-div");	
+			    
 				if($('#login-openshift-type-radio-group-enterprise').prop('checked')) {
-    				enterprise_url_textbox_div.show();
+					enterprise_url_textbox.val('');
+					enterprise_url_textbox_div.show();
     				online_create_account_div.hide();
 			    } else {
     				enterprise_url_textbox_div.hide();

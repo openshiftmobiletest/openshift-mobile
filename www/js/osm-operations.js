@@ -21,7 +21,6 @@ function login(app,callback,errback,precall) {
 	//Update everything based on stored settings
 	var settings = app.settings.load();
 	app.rest.set_credentials(settings.username,settings.password);
-	console.log(settings.api);
 	app.rest.set_api_version(settings.api);
 	app.rest.GET('domains',callback,errback,precall);
 }
